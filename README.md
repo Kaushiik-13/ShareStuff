@@ -7,21 +7,6 @@ It bridges the gap between people who own rarely used items and those who tempor
 
 ---
 
-## 🎯 Objective
-
-To build a scalable, secure, and intuitive web application where users can list personal items for rent, and others can browse, request, and rent them for specific durations.  
-The system manages verification, bookings, and reviews, providing a seamless and trustworthy experience.
-
----
-
-## 🧩 Problem Statement
-
-Many people own valuable items they seldom use — like cameras, bikes, or projectors.  
-Others need such items occasionally but purchasing them outright is impractical.  
-**ShareStuff** solves this by enabling item owners to rent out unused items and allowing renters to access them affordably through a trusted, verified platform.
-
----
-
 ## 📦 Scope of the Project
 
 - Users can list items with title, description, images, price per day, and availability.
