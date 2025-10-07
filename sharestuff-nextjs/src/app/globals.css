@@ -1,26 +1,42 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
+  --primary: #000000; /* Matches HTML button's bg-primary */
+  --background-light: #ffffff;
+  --background-dark: #1a202c;
+  --text-light: #1a202c;
+  --text-dark: #ffffff;
+  --input-bg-light: #ffffff;
+  --input-bg-dark: #2d3748;
+  --input-border-light: #e2e8f0;
+  --input-border-dark: #4a5568;
+  --input-text-light: #4a5568;
+  --input-text-dark: #a0aec0;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", Arial, Helvetica, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
+
+/* Custom classes to support LoginPage */
+.bg-primary { background-color: var(--primary); }
+.bg-background-light { background-color: var(--background-light); }
+.bg-background-dark { background-color: var(--background-dark); }
+.text-text-light { color: var(--text-light); }
+.text-text-dark { color: var(--text-dark); }
+.bg-input-bg-light { background-color: var(--input-bg-light); }
+.bg-input-bg-dark { background-color: var(--input-bg-dark); }
+.border-input-border-light { border-color: var(--input-border-light); }
+.border-input-border-dark { border-color: var(--input-border-dark); }
+.text-input-text-light { color: var(--input-text-light); }
+.text-input-text-dark { color: var(--input-text-dark); }
