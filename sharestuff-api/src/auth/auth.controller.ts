@@ -1,4 +1,4 @@
-import {Controller,Post,Body,Param,Get,Res,UseInterceptors,UploadedFile,NotFoundException, Put, Delete,} from '@nestjs/common';
+import { Controller, Post, Body, Param, Get, Res, UseInterceptors, UploadedFile, NotFoundException, Put, Delete, } from '@nestjs/common';
 import { ApiTags, ApiConsumes, ApiBody } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import type { Response } from 'express';
@@ -7,11 +7,14 @@ import { SignupDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { VerifyOtpDto } from './dto/verify-otp.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   // Signup & Login
   @Post('signup')
@@ -73,12 +76,20 @@ export class AuthController {
     return res.json(result);
   }
 
-  // Password
-  @Put(':userId/password')
-  async updatePassword(
-    @Param('userId') userId: string,
-    @Body() body: UpdatePasswordDto
-  ) {
-    return this.authService.updatePassword(userId, body.newPassword);
+
+  @Post('forgot-password')
+  async forgotPassword(@Body() dto: ForgotPasswordDto) {
+    return this.authService.sendOtp(dto.email);
   }
+
+  @Post('verify-otp')
+  async verifyOtp(@Body() dto: VerifyOtpDto) {
+    return this.authService.verifyOtp(dto.email, dto.otp);
+  }
+
+  @Post('reset-password')
+  async resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.authService.resetPassword(dto.email, dto.newPassword);
+  }
+
 }
