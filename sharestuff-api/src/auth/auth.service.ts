@@ -143,7 +143,7 @@ export class AuthService {
 
 
 
-  // 🟢 Step 1: Send OTP to email
+  // Step 1: Send OTP to email
 async sendOtp(email: string) {
   const login = await this.loginsRepo.findOne({ where: { email } });
   if (!login) throw new NotFoundException('No account found with this email');
@@ -157,9 +157,9 @@ async sendOtp(email: string) {
     subject: 'Your OTP Code for Password Reset',
     html: `
       <div style="font-family: Arial, sans-serif;">
-        <h2 style="color:#1a202c;">ShareStuff Password Reset</h2>
+        <h2 style="color:#3a86ff;">ShareStuff Password Reset</h2>
         <p>Your OTP code is:</p>
-        <h1 style="color:#1a202c; letter-spacing:2px;">${otp}</h1>
+        <h1 style="color:#3a86ff; letter-spacing:2px;">${otp}</h1>
         <p>This code will expire in <b>5 minutes</b>.</p>
         <p>If you didn’t request this, you can ignore this email.</p>
       </div>
@@ -170,7 +170,7 @@ async sendOtp(email: string) {
 }
 
 
-  // 🟢 Step 2: Verify OTP
+  // Step 2: Verify OTP
   async verifyOtp(email: string, otp: string) {
     const record = this.otpStore.get(email);
     if (!record) throw new BadRequestException('No OTP found or expired');
@@ -189,7 +189,7 @@ async sendOtp(email: string) {
     return { message: 'OTP verified successfully' };
   }
 
-  // 🟢 Step 3: Reset Password
+  // Step 3: Reset Password
   async resetPassword(email: string, newPassword: string) {
     const login = await this.loginsRepo.findOne({ where: { email } });
     if (!login) throw new NotFoundException('User not found');
